@@ -1,12 +1,19 @@
+(** adapted from
+    https://gitlab.com/cryptsetup/cryptsetup/wikis/LUKS-standard/on-disk-format.pdf *)
+
+val luks_MAGIC : Cs.t
+val luks_KEY_DISABLED : int32
+val luks_KEY_ENABLED : int32
+
 type key_slot =
   { iterations: int32;
     salt: Cs.t;
-    key_material_offset: int32;
-    stripes: int32;
+    key_material_offset: int32; (** sector where KM starts *)
+    stripes: int32; (** count of "anti-forensic stripes" *)
   }
 
 type phdr =
-  { version: int;
+  { version: int;(** 0x00 or 0x01 *)
     cipher_name: string;
     cipher_mode: string;
     hash_spec: string;

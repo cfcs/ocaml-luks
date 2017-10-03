@@ -1,5 +1,6 @@
 let luks_MAGIC = "LUKS\xBA\xBE"
-let luks_KEY_DISABLED = 57005l
+let luks_KEY_DISABLED = 0xdead_l
+let luks_KEY_ENABLED  = 0xac71f3_l
 
 open Rresult
 
@@ -12,7 +13,7 @@ type key_slot =
 
 let pp_key_slot fmt k =
   Fmt.pf fmt "Active: @[<v>iterations: %ld@,salt: %a@,key_material_offset: %ld\
-              @,stripes: %ld@]"
+              @,anti-forensics stripes: %ld@]"
     k.iterations Cstruct.hexdump_pp k.salt k.key_material_offset k.stripes
 
 let pp_key_slots fmt slots =
