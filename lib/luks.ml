@@ -48,17 +48,13 @@ type phdr =
 
 let pp_phdr_with_master_key fmt p =
   Fmt.pf fmt "@[<v>LUKS version: %d@,cipher name: %S, mode: %S\
-              @,hash spec: %S\ payload offset: %ld key bytes: %ld\
+              @,hash spec: %S payload offset: %ld key bytes: %ld\
               @,master key digest: %a@,master key digest salt: %a\
               @,master key digest iterations: %ld\
               @,UUID: %S\
               @,key slots: %a@]"
-    p.version
-    p.cipher_name
-    p.cipher_mode
-    p.hash_spec
-    p.payload_offset
-    p.key_bytes
+    p.version  p.cipher_name  p.cipher_mode
+    p.hash_spec p.payload_offset p.key_bytes
     Cstruct.hexdump_pp p.mk_digest Cstruct.hexdump_pp p.mk_digest_salt
     p.mk_digest_iter
     p.uuid
