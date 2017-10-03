@@ -1,0 +1,32 @@
+opam-version: "1.2"
+maintainer: "root@localhost"
+authors: [ "none" ]
+license: "gopher://license.to.kill"
+homepage: "https://github.com/cfcs/ocaml-luks"
+dev-repo: "https://github.com/cfcs/ocaml-luks.git"
+bug-reports: "https://github.com/cfcs/ocaml-luks/issues"
+
+available: [ ocaml-version >= "4.04.0" & os != "windows" ]
+
+build: [
+  [ "ocaml" "pkg/pkg.ml" "build" "--pinned" "%{pinned}%" "--tests" "false"
+    "--with-cli" "%{cmdliner+bos+fpath:installed}%" ]
+]
+
+depends: [
+  "ocamlbuild" {build}
+  "ocamlfind" {build}
+  "topkg" {build}
+  "odoc" {build & doc}
+  "logs"
+  "cs"
+  "cstruct"
+  "rresult"
+  "fmt"
+]
+
+depopts: [
+  "cmdliner"
+  "bos"
+  "fpath"
+]

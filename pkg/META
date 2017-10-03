@@ -1,0 +1,8 @@
+description = "Linux Unified Key Setup (LUKS) library"
+version = "%%VERSION_NUM%%"
+requires = "cs cstruct fmt logs rresult"
+archive(byte) = "luks.cma"
+plugin(byte) = "luks.cma"
+archive(native) = "luks.cmxa"
+plugin(native) = "luks.cxms"
+exists_if = "luks.cma"
