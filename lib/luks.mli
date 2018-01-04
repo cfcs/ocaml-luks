@@ -1,7 +1,7 @@
 (** adapted from
     https://gitlab.com/cryptsetup/cryptsetup/wikis/LUKS-standard/on-disk-format.pdf *)
 
-val luks_MAGIC : Cs.t
+val luks_MAGIC : string
 val luks_KEY_DISABLED : int32
 val luks_KEY_ENABLED : int32
 
