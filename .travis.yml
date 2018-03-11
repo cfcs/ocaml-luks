@@ -1,0 +1,15 @@
+language: c
+install: wget https://raw.githubusercontent.com/ocaml/ocaml-travisci-skeleton/master/.travis-opam.sh
+script: bash -ex .travis-opam.sh
+sudo: required
+global:
+  - PINS="cs:https://github.com/cfcs/ocaml-cs.git"
+env:
+  - PACKAGE="luks" OCAML_VERSION=4.04
+  - PACKAGE="luks" OCAML_VERSION=4.05
+  - PACKAGE="luks" OCAML_VERSION=4.06
+os:
+  - linux
+  - osx
+notifications:
+  email: false
