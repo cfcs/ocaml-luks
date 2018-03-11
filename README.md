@@ -1,3 +1,5 @@
+![Build status](https://travis-ci.org/cfcs/ocaml-luks.svg?branch=master)
+
 A small utility to pretty-print LUKS headers.
 
 ## Building
