@@ -14,7 +14,7 @@ type key_slot =
 let pp_key_slot fmt k =
   Fmt.pf fmt "Active: @[<v>iterations: %ld@,salt: %a@,key_material_offset: %ld\
               @,anti-forensics stripes: %ld@]"
-    k.iterations Cstruct.hexdump_pp k.salt k.key_material_offset k.stripes
+    k.iterations Cs.pp_hex k.salt k.key_material_offset k.stripes
 
 let pp_key_slots fmt slots =
   Fmt.pf fmt "@[<v>| %a@]"
@@ -55,7 +55,7 @@ let pp_phdr_with_master_key fmt p =
               @,key slots: %a@]"
     p.version  p.cipher_name  p.cipher_mode
     p.hash_spec p.payload_offset p.key_bytes
-    Cstruct.hexdump_pp p.mk_digest Cstruct.hexdump_pp p.mk_digest_salt
+    Cs.pp_hex p.mk_digest Cs.pp_hex p.mk_digest_salt
     p.mk_digest_iter
     p.uuid
     pp_key_slots p.key_slots
